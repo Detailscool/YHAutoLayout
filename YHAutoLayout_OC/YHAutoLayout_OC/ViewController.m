@@ -36,7 +36,7 @@
     UIView * orangeView = [[UIView alloc]init];
     [blueView addSubview:orangeView];
     orangeView.backgroundColor = [UIColor orangeColor];
-    orangeView.bottomEqualToView(blueView).rightSpaceToView(blueView,-10).widthRatioToView(redView,0.2).heightEqualTo(50);
+    orangeView.bottomSpaceToView(blueView,10).rightSpaceToView(blueView,10).widthRatioToView(redView,0.2).heightEqualTo(50);
 }
 
 @end

@@ -42,7 +42,7 @@
     YHLayoutSpaceBlock yhSpace = ^UIView *(UIView * view ,CGFloat space) {
         view.translatesAutoresizingMaskIntoConstraints = NO;
         if ([view.subviews containsObject:self]) {
-            [view addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeBottom multiplier:1 constant:space]];
+            [view addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeBottom multiplier:1 constant:-space]];
         }else {
             [self yhConstraint:NSLayoutAttributeBottom equalToView:view withConstraint:NSLayoutAttributeTop space:space];
         }
@@ -56,7 +56,7 @@
     YHLayoutSpaceBlock yhSpace = ^UIView *(UIView * view ,CGFloat space) {
         view.translatesAutoresizingMaskIntoConstraints = NO;
         if ([view.subviews containsObject:self]) {
-            [view addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTrailing multiplier:1 constant:space]];
+            [view addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTrailing multiplier:1 constant:-space]];
         }else {
             [self yhConstraint:NSLayoutAttributeTrailing equalToView:view withConstraint:NSLayoutAttributeLeading space:space];
         }
