@@ -13,7 +13,7 @@
 		2E6B93BB1D32266B00CC00B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E6B93BA1D32266B00CC00B7 /* Assets.xcassets */; };
 		2E6B93BE1D32266B00CC00B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E6B93BC1D32266B00CC00B7 /* LaunchScreen.storyboard */; };
 		2E6B93C91D3226F800CC00B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6B93C81D3226F800CC00B7 /* ViewController.m */; };
-		2E6B93CD1D322ADC00CC00B7 /* UIView+YHAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6B93CC1D322ADC00CC00B7 /* UIView+YHAutoLayout.m */; };
+		2EF96C731D32406F00B58315 /* UIView+YHAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF96C721D32406F00B58315 /* UIView+YHAutoLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +27,8 @@
 		2E6B93BD1D32266B00CC00B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E6B93BF1D32266B00CC00B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E6B93C81D3226F800CC00B7 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		2E6B93CB1D322ADC00CC00B7 /* UIView+YHAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YHAutoLayout.h"; sourceTree = "<group>"; };
-		2E6B93CC1D322ADC00CC00B7 /* UIView+YHAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YHAutoLayout.m"; sourceTree = "<group>"; };
+		2EF96C711D32406F00B58315 /* UIView+YHAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YHAutoLayout.h"; sourceTree = "<group>"; };
+		2EF96C721D32406F00B58315 /* UIView+YHAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YHAutoLayout.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +63,7 @@
 			children = (
 				2E6B93B41D32266B00CC00B7 /* ViewController.h */,
 				2E6B93C81D3226F800CC00B7 /* ViewController.m */,
-				2E6B93CA1D322ADC00CC00B7 /* YHAutoLayout */,
+				2EF96C701D32406F00B58315 /* YHAutoLayout */,
 				2E6B93AE1D32266B00CC00B7 /* Supporting Files */,
 			);
 			path = YHAutoLayout_OC;
@@ -83,14 +83,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2E6B93CA1D322ADC00CC00B7 /* YHAutoLayout */ = {
+		2EF96C701D32406F00B58315 /* YHAutoLayout */ = {
 			isa = PBXGroup;
 			children = (
-				2E6B93CB1D322ADC00CC00B7 /* UIView+YHAutoLayout.h */,
-				2E6B93CC1D322ADC00CC00B7 /* UIView+YHAutoLayout.m */,
+				2EF96C711D32406F00B58315 /* UIView+YHAutoLayout.h */,
+				2EF96C721D32406F00B58315 /* UIView+YHAutoLayout.m */,
 			);
-			path = YHAutoLayout;
-			sourceTree = SOURCE_ROOT;
+			name = YHAutoLayout;
+			path = ../../YHAutoLayout;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -162,9 +163,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EF96C731D32406F00B58315 /* UIView+YHAutoLayout.m in Sources */,
 				2E6B93B31D32266B00CC00B7 /* AppDelegate.m in Sources */,
 				2E6B93C91D3226F800CC00B7 /* ViewController.m in Sources */,
-				2E6B93CD1D322ADC00CC00B7 /* UIView+YHAutoLayout.m in Sources */,
 				2E6B93B01D32266B00CC00B7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +313,7 @@
 				2E6B93C41D32266B00CC00B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
