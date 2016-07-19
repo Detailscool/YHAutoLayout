@@ -6,11 +6,23 @@
 //
 
 #import "UIView+YHAutoLayout.h"
+#import <objc/runtime.h>
 
 @implementation UIView (YHAutoLayout)
+
+- (void)setAutoLayoutState:(YHAutoLayoutState)autoLayoutState {
+    objc_setAssociatedObject(self, @selector(setAutoLayoutState:), @(autoLayoutState), OBJC_ASSOCIATION_ASSIGN);
+}
+
+- (YHAutoLayoutState)autoLayoutState {
+    return [objc_getAssociatedObject(self, @selector(setAutoLayoutState:)) integerValue];
+}
+
+
 #pragma mark - SpaceToView
 - (YHLayoutSpaceBlock)leftSpaceToView {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoLayoutState = YHAutoLayoutStateLeft;
     YHLayoutSpaceBlock yhSpace = ^UIView *(UIView * view ,CGFloat space) {
         if ([view.subviews containsObject:self]) {
             [view addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeLeading multiplier:1 constant:space]];
@@ -24,6 +36,7 @@
 
 - (YHLayoutSpaceBlock)topSpaceToView {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoLayoutState = YHAutoLayoutStateTop;
     YHLayoutSpaceBlock yhSpace = ^UIView *(UIView * view ,CGFloat space) {
         if ([view.subviews containsObject:self]) {
             [view addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTop multiplier:1 constant:space]];
@@ -37,6 +50,7 @@
 
 - (YHLayoutSpaceBlock)bottomSpaceToView {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoLayoutState = YHAutoLayoutStateBottom;
     YHLayoutSpaceBlock yhSpace = ^UIView *(UIView * view ,CGFloat space) {
         if ([view.subviews containsObject:self]) {
             [view addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeBottom multiplier:1 constant:-space]];
@@ -50,6 +64,7 @@
 
 - (YHLayoutSpaceBlock)rightSpaceToView {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoLayoutState = YHAutoLayoutStateRight;
     YHLayoutSpaceBlock yhSpace = ^UIView *(UIView * view ,CGFloat space) {
         if ([view.subviews containsObject:self]) {
             [view addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTrailing multiplier:1 constant:-space]];
@@ -64,6 +79,7 @@
 #pragma mark - EqualTo
 - (YHLayoutEqualBlock)widthEqualTo {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoLayoutState = YHAutoLayoutStateRight;
     YHLayoutEqualBlock yhEqual = ^UIView *(CGFloat width) {
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:width]];
         return self;
@@ -73,6 +89,7 @@
 
 - (YHLayoutEqualBlock)heightEqualTo {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoLayoutState = YHAutoLayoutStateRight;
     YHLayoutEqualBlock yhEqual = ^UIView *(CGFloat height) {
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1 constant:height]];
         return self;
@@ -83,6 +100,7 @@
 #pragma mark - EqualToView
 - (YHLayoutEqualViewBlock)leftEqualToView {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoLayoutState = YHAutoLayoutStateLeft;
     YHLayoutEqualViewBlock yhEqualToView = ^UIView *(UIView * view) {
         [self yhEqualToView:view withConstraint:NSLayoutAttributeLeading];
         return self;
@@ -92,6 +110,7 @@
 
 - (YHLayoutEqualViewBlock)topEqualToView {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoLayoutState = YHAutoLayoutStateTop;
     YHLayoutEqualViewBlock yhEqualToView = ^UIView *(UIView * view) {
         [self yhEqualToView:view withConstraint:NSLayoutAttributeTop];
         return self;
@@ -101,6 +120,7 @@
 
 - (YHLayoutEqualViewBlock)rightEqualToView {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoLayoutState = YHAutoLayoutStateRight;
     YHLayoutEqualViewBlock yhEqualToView = ^UIView *(UIView * view) {
         [self yhEqualToView:view withConstraint:NSLayoutAttributeTrailing];
         return self;
@@ -110,6 +130,7 @@
 
 - (YHLayoutEqualViewBlock)bottomEqualToView {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoLayoutState = YHAutoLayoutStateBottom;
     YHLayoutEqualViewBlock yhEqualToView = ^UIView *(UIView * view) {
         [self yhEqualToView:view withConstraint:NSLayoutAttributeBottom];
         return self;
@@ -119,6 +140,7 @@
 
 - (YHLayoutEqualViewBlock)widthEqualToView {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoLayoutState = YHAutoLayoutStateWidth;
     YHLayoutEqualViewBlock yhEqualToView = ^UIView *(UIView * view) {
         [self yhEqualToView:view withConstraint:NSLayoutAttributeWidth];
         return self;
@@ -128,6 +150,7 @@
 
 - (YHLayoutEqualViewBlock)heightEqualToView {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoLayoutState = YHAutoLayoutStateHeight;
     YHLayoutEqualViewBlock yhEqualToView = ^UIView *(UIView * view) {
         [self yhEqualToView:view withConstraint:NSLayoutAttributeHeight];
         return self;
@@ -137,6 +160,7 @@
 
 - (YHLayoutEqualViewBlock)centerXEqualToView {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoLayoutState = YHAutoLayoutStateCenterX;
     YHLayoutEqualViewBlock yhEqualToView = ^UIView *(UIView * view) {
         [self yhEqualToView:view withConstraint:NSLayoutAttributeCenterX];
         return self;
@@ -146,6 +170,7 @@
 
 - (YHLayoutEqualViewBlock)centerYEqualToView {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoLayoutState = YHAutoLayoutStateCenterY;
     YHLayoutEqualViewBlock yhEqualToView = ^UIView *(UIView * view) {
         [self yhEqualToView:view withConstraint:NSLayoutAttributeCenterY];
         return self;
@@ -156,6 +181,7 @@
 #pragma mark - RatioTo
 - (YHLayoutRatioBlock)widthRatioToView {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoLayoutState = YHAutoLayoutStateWidth;
     YHLayoutRatioBlock yhRatioToView = ^UIView *(UIView * view,CGFloat ratio) {
         [self yhRatioToView:view withConstraint:NSLayoutAttributeWidth ratio:ratio];
         return self;
@@ -165,11 +191,67 @@
 
 - (YHLayoutRatioBlock)heightRatioToView {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoLayoutState = YHAutoLayoutStateHeight;
     YHLayoutRatioBlock yhRatioToView = ^UIView *(UIView * view,CGFloat ratio) {
         [self yhRatioToView:view withConstraint:NSLayoutAttributeHeight ratio:ratio];
         return self;
     };
     return yhRatioToView;
+}
+
+- (YHLayoutFullFillViewBlock)fullFillToView {
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.autoLayoutState = YHAutoLayoutStateFullFill;
+    YHLayoutFullFillViewBlock yhFullFillToView = ^UIView *(UIView * view) {
+        [self yhEqualToView:view withConstraint:NSLayoutAttributeLeading];
+        [self yhEqualToView:view withConstraint:NSLayoutAttributeTop];
+        [self yhEqualToView:view withConstraint:NSLayoutAttributeTrailing];
+        [self yhEqualToView:view withConstraint:NSLayoutAttributeBottom];
+        return self;
+    };
+    return yhFullFillToView;
+}
+
+#pragma mark - Offset
+- (YHLayoutOffsetBlock)offest {
+    switch (self.autoLayoutState) {
+        case YHAutoLayoutStateLeft:
+            return ^UIView * (CGFloat offset) {
+//                self.fi
+                return self;
+            };
+            break;
+        case YHAutoLayoutStateRight:
+            return ^UIView * (CGFloat offset) {
+                return self;
+            };
+            break;
+        case YHAutoLayoutStateTop:
+            return ^UIView * (CGFloat offset) {
+                return self;
+            };
+            break;
+        case YHAutoLayoutStateBottom:
+            return ^UIView * (CGFloat offset) {
+                return self;
+            };
+            break;
+        case YHAutoLayoutStateCenterX:
+            return ^UIView * (CGFloat offset) {
+                return self;
+            };
+            break;
+        case YHAutoLayoutStateCenterY:
+            return ^UIView * (CGFloat offset) {
+                return self;
+            };
+            break;
+        default:
+            return ^UIView * (CGFloat offset) {
+                return self;
+            };
+            break;
+        }
 }
 
 #pragma mark - Private

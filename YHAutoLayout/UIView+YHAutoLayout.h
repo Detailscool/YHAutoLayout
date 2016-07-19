@@ -11,8 +11,27 @@ typedef UIView * (^YHLayoutSpaceBlock)(UIView *,CGFloat);
 typedef UIView * (^YHLayoutEqualBlock)(CGFloat);
 typedef UIView * (^YHLayoutEqualViewBlock)(UIView *);
 typedef UIView * (^YHLayoutRatioBlock)(UIView *,CGFloat);
+typedef UIView * (^YHLayoutFullFillViewBlock)(UIView *);
+typedef UIView * (^YHLayoutOffsetBlock)(CGFloat);
+
+typedef NS_OPTIONS(NSUInteger, YHAutoLayoutState) {
+    YHAutoLayoutStateLeft,
+    YHAutoLayoutStateRight,
+    YHAutoLayoutStateTop,
+    YHAutoLayoutStateBottom,
+    YHAutoLayoutStateHeight,
+    YHAutoLayoutStateWidth,
+    YHAutoLayoutStateCenterX,
+    YHAutoLayoutStateCenterY,
+    YHAutoLayoutStateFullFill
+};
 
 @interface UIView (YHAutoLayout)
+
+@property (nonatomic,assign)YHAutoLayoutState autoLayoutState;
+
+///************************ Offset ***************************/
+//@property (nonatomic,strong,readonly)YHLayoutOffsetBlock offest;
 
 /************************ SpaceToView ***************************/
 @property (nonatomic,strong,readonly)YHLayoutSpaceBlock leftSpaceToView;
@@ -37,5 +56,8 @@ typedef UIView * (^YHLayoutRatioBlock)(UIView *,CGFloat);
 /************************ RatioTo ***************************/
 @property (nonatomic,strong,readonly)YHLayoutRatioBlock widthRatioToView;
 @property (nonatomic,strong,readonly)YHLayoutRatioBlock heightRatioToView;
+
+/************************ RatioTo ***************************/
+@property (nonatomic,strong,readonly)YHLayoutFullFillViewBlock fullFillToView;
 
 @end

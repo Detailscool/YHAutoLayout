@@ -14,6 +14,7 @@
 		2E6B93BE1D32266B00CC00B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E6B93BC1D32266B00CC00B7 /* LaunchScreen.storyboard */; };
 		2E6B93C91D3226F800CC00B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6B93C81D3226F800CC00B7 /* ViewController.m */; };
 		2EF96C731D32406F00B58315 /* UIView+YHAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF96C721D32406F00B58315 /* UIView+YHAutoLayout.m */; };
+		8D54B5C61D3E0E08007EB9FA /* UIControl+YHControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D54B5C51D3E0E08007EB9FA /* UIControl+YHControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		2E6B93C81D3226F800CC00B7 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2EF96C711D32406F00B58315 /* UIView+YHAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YHAutoLayout.h"; sourceTree = "<group>"; };
 		2EF96C721D32406F00B58315 /* UIView+YHAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YHAutoLayout.m"; sourceTree = "<group>"; };
+		8D54B5C41D3E0E08007EB9FA /* UIControl+YHControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+YHControl.h"; sourceTree = "<group>"; };
+		8D54B5C51D3E0E08007EB9FA /* UIControl+YHControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+YHControl.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,8 @@
 			children = (
 				2EF96C711D32406F00B58315 /* UIView+YHAutoLayout.h */,
 				2EF96C721D32406F00B58315 /* UIView+YHAutoLayout.m */,
+				8D54B5C41D3E0E08007EB9FA /* UIControl+YHControl.h */,
+				8D54B5C51D3E0E08007EB9FA /* UIControl+YHControl.m */,
 			);
 			name = YHAutoLayout;
 			path = ../../YHAutoLayout;
@@ -164,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EF96C731D32406F00B58315 /* UIView+YHAutoLayout.m in Sources */,
+				8D54B5C61D3E0E08007EB9FA /* UIControl+YHControl.m in Sources */,
 				2E6B93B31D32266B00CC00B7 /* AppDelegate.m in Sources */,
 				2E6B93C91D3226F800CC00B7 /* ViewController.m in Sources */,
 				2E6B93B01D32266B00CC00B7 /* main.m in Sources */,
