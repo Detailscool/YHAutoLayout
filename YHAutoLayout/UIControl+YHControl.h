@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef void(^YHActionBlock)();
-typedef UIControl * (^YHControlBlock)(UIControlEvents,YHActionBlock);
+typedef void (^YHActionBlock)();
+typedef UIControl* (^YHControlBlock)(UIControlEvents,YHActionBlock);
 
 @interface UIControl (YHControl)
 @property (nonatomic,strong,readonly)YHControlBlock action;

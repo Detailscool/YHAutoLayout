@@ -29,13 +29,13 @@
     
     YHControlBlock yhControl = ^(UIControlEvents events, YHActionBlock actionBlock){
         self.actionBlock = actionBlock;
-        [self addTarget:self action:@selector(abc) forControlEvents:events];
+        [self addTarget:self action:@selector(actionFunction) forControlEvents:events];
         return self;
     };
     return yhControl;
 }
 
-- (void)abc {
+- (void)actionFunction {
     !self.actionBlock?:self.actionBlock();
 }
 

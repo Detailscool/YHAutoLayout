@@ -7,57 +7,44 @@
 
 #import <UIKit/UIKit.h>
 
-typedef UIView * (^YHLayoutSpaceBlock)(UIView *,CGFloat);
-typedef UIView * (^YHLayoutEqualBlock)(CGFloat);
-typedef UIView * (^YHLayoutEqualViewBlock)(UIView *);
-typedef UIView * (^YHLayoutRatioBlock)(UIView *,CGFloat);
-typedef UIView * (^YHLayoutFullFillViewBlock)(UIView *);
-typedef UIView * (^YHLayoutOffsetBlock)(CGFloat);
-
-typedef NS_OPTIONS(NSUInteger, YHAutoLayoutState) {
-    YHAutoLayoutStateLeft,
-    YHAutoLayoutStateRight,
-    YHAutoLayoutStateTop,
-    YHAutoLayoutStateBottom,
-    YHAutoLayoutStateHeight,
-    YHAutoLayoutStateWidth,
-    YHAutoLayoutStateCenterX,
-    YHAutoLayoutStateCenterY,
-    YHAutoLayoutStateFullFill
-};
+typedef UIView* (^YHLayoutSpaceBlock)(UIView *,CGFloat);
+typedef UIView* (^YHLayoutEqualBlock)(CGFloat);
+typedef UIView* (^YHLayoutEqualViewBlock)(UIView *);
+typedef UIView* (^YHLayoutRatioBlock)(UIView *,CGFloat);
+typedef UIView* (^YHLayoutFullFillViewBlock)(UIView *);
+typedef UIView* (^YHLayoutAdjustBlock)(CGFloat);
 
 @interface UIView (YHAutoLayout)
 
-@property (nonatomic,assign)YHAutoLayoutState autoLayoutState;
-
-///************************ Offset ***************************/
-//@property (nonatomic,strong,readonly)YHLayoutOffsetBlock offest;
+/************************ Adjust ***************************/
+- (YHLayoutAdjustBlock)offest;
+//- (YHLayoutAdjustBlock)multy;
 
 /************************ SpaceToView ***************************/
-@property (nonatomic,strong,readonly)YHLayoutSpaceBlock leftSpaceToView;
-@property (nonatomic,strong,readonly)YHLayoutSpaceBlock topSpaceToView;
-@property (nonatomic,strong,readonly)YHLayoutSpaceBlock rightSpaceToView;
-@property (nonatomic,strong,readonly)YHLayoutSpaceBlock bottomSpaceToView;
+- (YHLayoutSpaceBlock)leftSpaceToView;
+- (YHLayoutSpaceBlock)topSpaceToView;
+- (YHLayoutSpaceBlock)rightSpaceToView;
+- (YHLayoutSpaceBlock)bottomSpaceToView;
 
 /************************ EqualTo ***************************/
-@property (nonatomic,strong,readonly)YHLayoutEqualBlock widthEqualTo;
-@property (nonatomic,strong,readonly)YHLayoutEqualBlock heightEqualTo;
+- (YHLayoutEqualBlock)widthEqualTo;
+- (YHLayoutEqualBlock)heightEqualTo;
 
 /************************ EqualToView ***************************/
-@property (nonatomic,strong,readonly)YHLayoutEqualViewBlock leftEqualToView;
-@property (nonatomic,strong,readonly)YHLayoutEqualViewBlock rightEqualToView;
-@property (nonatomic,strong,readonly)YHLayoutEqualViewBlock topEqualToView;
-@property (nonatomic,strong,readonly)YHLayoutEqualViewBlock bottomEqualToView;
-@property (nonatomic,strong,readonly)YHLayoutEqualViewBlock widthEqualToView;
-@property (nonatomic,strong,readonly)YHLayoutEqualViewBlock heightEqualToView;
-@property (nonatomic,strong,readonly)YHLayoutEqualViewBlock centerXEqualToView;
-@property (nonatomic,strong,readonly)YHLayoutEqualViewBlock centerYEqualToView;
+- (YHLayoutEqualViewBlock)leftEqualToView;
+- (YHLayoutEqualViewBlock)rightEqualToView;
+- (YHLayoutEqualViewBlock)topEqualToView;
+- (YHLayoutEqualViewBlock)bottomEqualToView;
+- (YHLayoutEqualViewBlock)widthEqualToView;
+- (YHLayoutEqualViewBlock)heightEqualToView;
+- (YHLayoutEqualViewBlock)centerXEqualToView;
+- (YHLayoutEqualViewBlock)centerYEqualToView;
 
 /************************ RatioTo ***************************/
-@property (nonatomic,strong,readonly)YHLayoutRatioBlock widthRatioToView;
-@property (nonatomic,strong,readonly)YHLayoutRatioBlock heightRatioToView;
+- (YHLayoutRatioBlock)widthRatioToView;
+- (YHLayoutRatioBlock)heightRatioToView;
 
 /************************ RatioTo ***************************/
-@property (nonatomic,strong,readonly)YHLayoutFullFillViewBlock fullFillToView;
+- (YHLayoutFullFillViewBlock)fullFillToView;
 
 @end

@@ -22,7 +22,7 @@
     UIView * redView = [[UIView alloc]init];
     [self.view addSubview:redView];
     redView.backgroundColor = [UIColor redColor];
-    redView.leftSpaceToView(self.view,100).topSpaceToView(self.view,100).widthEqualTo(100).heightEqualTo(100);
+    redView.topSpaceToView(self.view,100).widthEqualTo(100).heightEqualTo(100).leftSpaceToView(self.view,0).offest(100);
     
     UIView * blueView = [[UIView alloc]init];
     [self.view addSubview:blueView];
@@ -43,11 +43,12 @@
     button.backgroundColor = [UIColor darkGrayColor];
     [self.view addSubview:button];
     button.leftSpaceToView(blueView,20).topSpaceToView(blueView,30).widthEqualTo(80).heightRatioToView(blueView,0.9);
+    
+    __weak typeof(self) weakSelf = self;
     button.action(UIControlEventTouchUpInside ,^(){
-        NSLog(@"%s",__func__);
+        [weakSelf.navigationController popViewControllerAnimated:YES];
     });
 }
-
 
 - (void)dealloc {
     NSLog(@"%s",__func__);
