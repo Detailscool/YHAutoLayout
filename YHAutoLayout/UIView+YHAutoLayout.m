@@ -268,6 +268,15 @@ typedef NS_OPTIONS(NSUInteger, YHAutoLayoutState) {
 
 - (void)yhConstraint:(NSLayoutAttribute)attribute toView:(UIView *)view withConstraint:(NSLayoutAttribute)viewAttribute ratio:(CGFloat)ratio space:(CGFloat)space {
     UIView * superView = self.superview;
+    
+    UIView * resultSubview = [self yhSubviews:superView.subviews containsView:view];
+    if (resultSubview) {
+        NSLayoutConstraint * constraint = [NSLayoutConstraint constraintWithItem:self attribute:attribute relatedBy:NSLayoutRelationEqual toItem:view attribute:viewAttribute multiplier:ratio constant:space];
+        [superView addConstraint:constraint];
+        self.currentConstraint = constraint;
+        return;
+    }
+    
     while (superView) {
         if([superView.subviews containsObject:view]) {
             NSLayoutConstraint * constraint = [NSLayoutConstraint constraintWithItem:self attribute:attribute relatedBy:NSLayoutRelationEqual toItem:view attribute:viewAttribute multiplier:ratio constant:space];
@@ -277,6 +286,21 @@ typedef NS_OPTIONS(NSUInteger, YHAutoLayoutState) {
         }
         superView = superView.superview;
     }
+}
+
+- (UIView *)yhSubviews:(NSArray *)subviews containsView:(UIView *)view {
+    if (subviews.count > 0) {
+        for (UIView * subview in subviews) {
+            if ([subview.subviews containsObject:view]) {
+                return subview;
+            }
+            UIView * resultSubview = [self yhSubviews:subview.subviews containsView:view];
+            if (resultSubview) {
+                return resultSubview;
+            }
+        }
+    }
+    return nil;
 }
 
 - (void)yhConstraint:(NSLayoutAttribute)attribute equalToView:(UIView *)view withConstraint:(NSLayoutAttribute)viewAttribute space:(CGFloat)space {

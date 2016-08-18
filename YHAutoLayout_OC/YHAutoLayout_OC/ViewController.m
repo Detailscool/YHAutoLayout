@@ -38,6 +38,11 @@
     [blueView addSubview:orangeView];
     orangeView.backgroundColor = [UIColor orangeColor];
     orangeView.bottomSpaceToView(blueView,10).rightSpaceToView(blueView,10).widthRatioToView(redView,0.2).heightEqualTo(50);
+    
+    UIView * cyanView = [[UIView alloc]init];
+    [self.view addSubview:cyanView];
+    cyanView.backgroundColor = [UIColor cyanColor];
+    cyanView.leftEqualToView(orangeView).offest(-10).topSpaceToView(orangeView,20).widthEqualToView(orangeView).heightRatioToView(orangeView,1.2);
 
     UIButton * button = [[UIButton alloc]init];
     button.backgroundColor = [UIColor darkGrayColor];
